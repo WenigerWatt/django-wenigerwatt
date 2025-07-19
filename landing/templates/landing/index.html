@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weniger Watt - Nachhaltig Energie sparen</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: #FAFAFA;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+        /* Header */
+        
+        header {
+            background: #f0f4f8;
+            border-bottom: 1px solid #ddd;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-family: 'Merriweather', serif;
+            font-size: 2rem;
+            color: #2c3e50;
+            font-weight: 700;
+            user-select: none;
+            cursor: default;
+            letter-spacing: 0.1rem;
+        }
+        
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 2rem;
+            font-size: 1rem;
+            transition: color 0.25s ease;
+            outline-offset: 3px;
+        }
+        
+        nav a:hover,
+        nav a:focus {
+            color: #2980b9;
+            outline: none;
+        }
+        /* Main */
+        
+        main {
+            flex: 1;
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            width: 100%;
+        }
+        /* Hero */
+        
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        
+        .hero-text {
+            max-width: 500px;
+        }
+        
+        .hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.6rem;
+            color: #2980b9;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        
+        .hero button {
+            padding: 1rem 3rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+            background-color: #2980b9;
+            border: none;
+            border-radius: 35px;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(41, 128, 185, 0.4);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .hero button:hover,
+        .hero button:focus {
+            background-color: #1f618d;
+            outline: none;
+            transform: scale(1.05);
+        }
+        
+        .hero img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(41, 128, 185, 0.2);
+            object-fit: cover;
+            max-height: 400px;
+        }
+        /* Sections Grid */
+        
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+            cursor: default;
+        }
+        
+        .card:hover {
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            font-family: 'Merriweather', serif;
+            color: #2980b9;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .card p {
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.5;
+        }
+        /* Energiespar Check */
+        
+        #energy-check {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem 3rem 2rem 3rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto 6rem auto;
+        }
+        
+        #energy-check h2 {
+            font-family: 'Merriweather', serif;
+            color: #2980b9;
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .question {
+            margin-bottom: 1.5rem;
+        }
+        
+        .question label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .options {
+            display: flex;
+            gap: 1.4rem;
+            flex-wrap: wrap;
+        }
+        
+        .option {
+            flex: 1 1 45%;
+            background: #f7f9fc;
+            border-radius: 10px;
+            padding: 1.2rem 1rem;
+            border: 2px solid transparent;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            text-align: center;
+            color: #616161;
+        }
+        
+        input[type="radio"] {
+            display: none;
+        }
+        
+        input[type="radio"]:checked+.option {
+            background-color: #2980b9;
+            color: white;
+            border-color: #1f618d;
+            box-shadow: 0 0 8px rgba(41, 128, 185, 0.7);
+        }
+        
+        .option:hover {
+            background-color: #eaf4fb;
+            color: #2980b9;
+        }
+        
+        #result {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            color: #2980b9;
+            text-align: center;
+            min-height: 3rem;
+        }
+        
+        #energy-check button {
+            margin: 2rem auto 0 auto;
+            display: block;
+            background-color: #2980b9;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 1rem 3.5rem;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(41, 128, 185, 0.4);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        #energy-check button:hover,
+        #energy-check button:focus {
+            background-color: #1f618d;
+            outline: none;
+            transform: scale(1.07);
+        }
+        /* Footer */
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 1.5rem 1rem;
+            user-select: none;
+        }
+        /* Responsive */
+        
+        @media (max-width: 850px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero img {
+                max-height: 300px;
+                margin-top: 2rem;
+            }
+            nav a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+            .option {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo" aria-label="Weniger Watt Logo">Weniger Watt</div>
+        <nav role="navigation" aria-label="Hauptnavigation">
+            <a href="#strom-chart" tabindex="0">HRW-Verbrauch</a>
+            <a href="#energy-check" tabindex="0">Energiespar-Check</a>
+            <a href="#tips" tabindex="0">Tipps</a>
+            <a href="#products" tabindex="0">Produkte</a>
+            <a href="#community" tabindex="0">Community</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" role="banner" aria-label="Energie sparen hero banner">
+            <div class="hero-text">
+                <h1>Weniger Watt, mehr Zukunft.</h1>
+                <p>Nachhaltig Energie sparen – mit Wissen, Technik und Gemeinschaft.</p>
+                <button aria-controls="energy-check" aria-label="Zum Energiespar-Check springen" onclick="document.getElementById('energy-check').scrollIntoView({behavior: 'smooth'})">Jetzt starten</button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Grüne Energie – Hände halten kleine Pflanze mit Glühbirne" />
+        </section>
+        <section id="chart-switcher">
+            <label for="chartSelect"><strong>Wähle Diagrammtyp:</strong></label>
+            <select id="chartSelect">
+                <option value="monthly-avg" selected>📊 Ø Verbrauch in 15 Minuten</option>
+                <option value="yearly">⚡ Jahresverbrauch (MWh)</option>
+                <option value="co2">🌱 CO₂-Ausstoß (pro Jahr)</option>
+            </select>
+        </section>
+
+        <section id="strom-chart" aria-label="Monatlicher Stromverbrauch">
+            <h2 id="chart-title" style="text-align: center; color: #2980b9; font-family: 'Merriweather', serif;">
+                Stromverbrauch pro Monat (2018–2025)
+            </h2>
+            <div style="max-width: 1000px; margin: 2rem auto;">
+                <div style="overflow-x: auto;">
+                    <canvas id="verbrauchChart" height="500"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="energy-check" aria-label="Interaktiver Energiespar-Check" tabindex="0">
+            <h2>Ihr persönlicher Energiespar-Check</h2>
+            <form id="check-form" aria-live="polite" aria-relevant="additions removals" novalidate>
+                <div class="question" role="radiogroup" aria-labelledby="q1-label">
+                    <label id="q1-label">1. Wie alt sind Ihre wichtigsten Haushaltsgeräte?</label>
+                    <input type="radio" id="q1a1" name="q1" value="1" required />
+                    <label for="q1a1" class="option">Älter als 10 Jahre</label>
+
+                    <input type="radio" id="q1a2" name="q1" value="3" />
+                    <label for="q1a2" class="option">5 - 10 Jahre</label>
+
+                    <input type="radio" id="q1a3" name="q1" value="5" />
+                    <label for="q1a3" class="option">Weniger als 5 Jahre</label>
+                </div>
+
+                <div class="question" role="radiogroup" aria-labelledby="q2-label">
+                    <label id="q2-label">2. Nutzen Sie bereits energiesparende Beleuchtung (z. B. LED)?</label>
+                    <input type="radio" id="q2a1" name="q2" value="1" required />
+                    <label for="q2a1" class="option">Nein</label>
+
+                    <input type="radio" id="q2a2" name="q2" value="4" />
+                    <label for="q2a2" class="option">Ja, teilweise</label>
+
+                    <input type="radio" id="q2a3" name="q2" value="5" />
+                    <label for="q2a3" class="option">Ja, komplett</label>
+                </div>
+
+                <div class="question" role="radiogroup" aria-labelledby="q3-label">
+                    <label id="q3-label">3. Wie regulieren Sie die Heizung oder Klimaanlage?</label>
+                    <input type="radio" id="q3a1" name="q3" value="1" required />
+                    <label for="q3a1" class="option">Manuell, ohne Zeitsteuerung</label>
+
+                    <input type="radio" id="q3a2" name="q3" value="4" />
+                    <label for="q3a2" class="option">Mit programmierbarem Thermostat</label>
+
+                    <input type="radio" id="q3a3" name="q3" value="5" />
+                    <label for="q3a3" class="option">Smart Home Steuerung</label>
+                </div>
+
+                <div class="question" role="radiogroup" aria-labelledby="q4-label">
+                    <label id="q4-label">4. Schalten Sie Geräte vollständig aus (kein Standby)?</label>
+                    <input type="radio" id="q4a1" name="q4" value="1" required />
+                    <label for="q4a1" class="option">Selten</label>
+
+                    <input type="radio" id="q4a2" name="q4" value="3" />
+                    <label for="q4a2" class="option">Meistens</label>
+
+                    <input type="radio" id="q4a3" name="q4" value="5" />
+                    <label for="q4a3" class="option">Immer</label>
+                </div>
+
+                <div class="question" role="radiogroup" aria-labelledby="q5-label">
+                    <label id="q5-label">5. Verwenden Sie erneuerbare Energien (z. B. Photovoltaik)?</label>
+                    <input type="radio" id="q5a1" name="q5" value="1" required />
+                    <label for="q5a1" class="option">Nein</label>
+
+                    <input type="radio" id="q5a2" name="q5" value="4" />
+                    <label for="q5a2" class="option">Teilweise</label>
+
+                    <input type="radio" id="q5a3" name="q5" value="5" />
+                    <label for="q5a3" class="option">Ja, umfassend</label>
+                </div>
+
+                <button type="submit" aria-label="Energiespar-Check auswerten">Check auswerten</button>
+            </form>
+            <div id="result" aria-live="polite" tabindex="0"></div>
+        </section>
+
+        <h2 style="grid-column: 1 / -1; text-align: center; color: #2980b9; font-family: 'Merriweather', serif;">
+            Tipps zum Energiesparen
+        </h2>
+        <section id="tips" aria-label="Energiespar Tipps" tabindex="0" class="section-grid">
+            <article class="card" tabindex="0">
+                <h3>Praktische Tipps</h3>
+                <p>Entdecken Sie einfache Wege, wie Sie im Alltag Strom und Energie sparen können – vom Kühlschrank bis zur Beleuchtung.</p>
+            </article>
+            <article class="card" tabindex="0">
+                <h3>Energieeffiziente Produkte</h3>
+                <p>Finden Sie modernste Produkte mit hoher Energieeffizienz und hilfreichen Technologien.</p>
+            </article>
+            <article class="card" tabindex="0">
+                <h3>Community & Erfolg</h3>
+                <p>Tauschen Sie sich mit Gleichgesinnten aus, teilen Sie Erfolgsgeschichten und profitieren Sie von der Motivation der Gemeinschaft.</p>
+            </article>
+        </section>
+
+        <h2 style="grid-column: 1 / -1; text-align: center; color: #2980b9; font-family: 'Merriweather', serif;">
+            Energieeffiziente Produkte
+        </h2>
+        <section id="products" aria-label="Energiespar Produkte" class="section-grid" tabindex="0">
+            <article class="card" tabindex="0">
+                <h3>Smart Thermostat</h3>
+                <p>Automatisierte Steuerung für Heiz- und Kühlgeräte zur Optimierung des Energieverbrauchs.</p>
+            </article>
+            <article class="card" tabindex="0">
+                <h3>LED Beleuchtung</h3>
+                <p>Effiziente, langlebige Lampen, die das Ambiente aufwerten und den Stromverbrauch verringern.</p>
+            </article>
+        </section>
+
+        <h2 style="grid-column: 1 / -1; text-align: center; color: #2980b9; font-family: 'Merriweather', serif;">
+            Unsere Community
+        </h2>
+        <section id="community" aria-label="Community Bereich" class="section-grid" tabindex="0">
+            <article class="card" tabindex="0">
+                <h3>Erfolgsgeschichte Max</h3>
+                <p>Max konnte seinen Stromverbrauch dank smarter Technologie um 25% senken.</p>
+            </article>
+            <article class="card" tabindex="0">
+                <h3>Community Challenge</h3>
+                <p>Schließen Sie sich der Herausforderung an und sparen Sie gemeinsam mit anderen Energie!</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 Weniger Watt. Alle Rechte vorbehalten. &nbsp;|&nbsp; Kontakt: info@wenigerwatt.de
+    </footer>
+
+    <script>
+        // Energiespar-Check Formularverarbeitung
+        const form = document.getElementById('check-form');
+        const resultDiv = document.getElementById('result');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            let score = 0;
+            let allAnswered = true;
+            for (const [key, value] of formData.entries()) {
+                if (!value) {
+                    allAnswered = false;
+                    break;
+                }
+                score += parseInt(value);
+            }
+
+            if (!allAnswered) {
+                resultDiv.textContent = 'Bitte beantworten Sie alle Fragen.';
+                resultDiv.focus();
+                return;
+            }
+
+            let message = '';
+            if (score <= 10) {
+                message = 'Ihr Energiesparpotenzial ist noch groß! Probieren Sie einfache Maßnahmen aus.';
+            } else if (score <= 18) {
+                message = 'Sie sparen schon gut Energie – mit ein paar Optimierungen geht es noch besser.';
+            } else {
+                message = 'Ausgezeichnet! Sie leben sehr energieeffizient und tragen zum Umweltschutz bei.';
+            }
+
+            resultDiv.textContent = message;
+            resultDiv.focus();
+        });
+    </script>
+
+    <script>
+        const chartCtx = document.getElementById('verbrauchChart').getContext('2d');
+        let currentChart = null;
+
+        const colors = {
+            '2024': '#3498db',
+            '2025': '#2ecc71',
+            'default': '#34495e'
+        };
+
+        const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
+
+        function renderChart(type) {
+            const title = document.getElementById('chart-title');
+
+            if (currentChart) currentChart.destroy();
+            if (type === 'monthly-avg') {
+                document.getElementById('chart-title').textContent = 'Ø Verbrauch in 15 Minuten';
+
+                fetch("/api/monthly-kwh/")
+                    .then(res => res.json())
+                    .then(data => {
+                        currentChart = new Chart(chartCtx, {
+                            type: 'bar',
+                            data: {
+                                labels: data.labels,
+                                datasets: [{
+                                    label: '2024',
+                                    data: data.datasets["2024"],
+                                    backgroundColor: '#3498db',
+                                    borderRadius: 4
+                                }, {
+                                    label: '2025',
+                                    data: data.datasets["2025"],
+                                    backgroundColor: '#2ecc71',
+                                    borderRadius: 4
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    tooltip: {
+                                        enabled: false
+                                    },
+                                    legend: {
+                                        position: 'top'
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Monat'
+                                        }
+                                    },
+                                    y: {
+                                        title: {
+                                            display: true,
+                                            text: 'kWh'
+                                        },
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                    });
+            }
+
+
+            if (type === 'yearly') {
+                fetch("/api/yearly/")
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById('chart-title').textContent = 'Jahresverbrauch (MWh)';
+                        currentChart = new Chart(chartCtx, {
+                            type: 'bar',
+                            data: {
+                                labels: data.labels,
+                                datasets: [{
+                                    label: 'Energieverbrauch (MWh)',
+                                    data: data.energy,
+                                    backgroundColor: '#2980b9',
+                                    borderRadius: 6
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    tooltip: {
+                                        enabled: false
+                                    },
+                                    legend: {
+                                        display: false
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        title: {
+                                            display: true,
+                                            text: 'MWh'
+                                        },
+                                        beginAtZero: true
+                                    },
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Jahr'
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    });
+            }
+
+
+            if (type === 'co2') {
+                if (type === 'co2') {
+                    fetch("/api/yearly/")
+                        .then(res => res.json())
+                        .then(data => {
+                            document.getElementById('chart-title').textContent = 'CO₂-Ausstoß pro Jahr';
+                            currentChart = new Chart(chartCtx, {
+                                type: 'bar',
+                                data: {
+                                    labels: data.labels,
+                                    datasets: [{
+                                        label: 'CO₂-Ausstoß (Tonnen)',
+                                        data: data.co2,
+                                        backgroundColor: '#27ae60',
+                                        borderRadius: 6
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        tooltip: {
+                                            enabled: false
+                                        },
+                                        legend: {
+                                            display: false
+                                        }
+                                    },
+                                    scales: {
+                                        y: {
+                                            title: {
+                                                display: true,
+                                                text: 't CO₂'
+                                            },
+                                            beginAtZero: true
+                                        },
+                                        x: {
+                                            title: {
+                                                display: true,
+                                                text: 'Jahr'
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        });
+                }
+            }
+        }
+        document.getElementById('chartSelect').addEventListener('change', (e) => {
+            renderChart(e.target.value);
+        });
+
+        renderChart('monthly-avg');
+    </script>
+
+
+</body>
+
+</html>
